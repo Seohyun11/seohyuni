@@ -109,7 +109,7 @@ nvres=rd.normalvariate()
 print(nvres)
 """
 
-import mod.utills as mu
+""" import mod.utills as mu
 res=mu.res()
 print(res)
 
@@ -120,4 +120,12 @@ fres=mu.fres()
 print(fres)
 
 nvres=mu.mvres()
-print(mvres)
+print(mvres) """
+
+import mod.utills as mu
+
+my_list = ['apple', 'banana','cherry']
+print(mu.rd_int(1,100))
+print(mu.rd_list(my_list))
+print(mu.rd_rd())
+print(mu.rd_rmvar())
