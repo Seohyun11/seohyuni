@@ -179,7 +179,7 @@ with zipfile.ZipFile('txt.zip') as myzip:
     myzip.extractall() 
      """
      
-import tarfile
+""" import tarfile
 
 with tarfile.open('txt.tar', 'w') as mytar:
     fp1=open("atar.txt",'w')
@@ -187,4 +187,14 @@ with tarfile.open('txt.tar', 'w') as mytar:
     fp2=open("btar.txt",'w')
     fp2.close
     fp3=open("ctar.txt",'w')
-    fp3.close
+    fp3.close """
+
+import argparse
+parser = argparse.ArgumentParser()
+parser.add_argument('-a', '--add', type=int, nargs='+', metavar='N', help='더할 숫자')
+parser.add_argument('-m', '--mul', type=int, nargs='+', metavar='N', help='곱할 숫자')
+if args.add:
+    print("총합 %d입니다." % functools.reduce(lambda x, y: x + y, args.add))
+if args.mul:
+    print("총곱 %d입니다." % functools.reduce(lambda x, y: x * y, args.mul))
+        
