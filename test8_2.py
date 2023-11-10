@@ -85,7 +85,7 @@ with open("ul.html","wb") as fp:
     
 #print(web.decode('utf-8'))
 print(web) """
-
+""" 
 #웹정보읽기 2
 import http.client as hc
 
@@ -101,3 +101,67 @@ with open("ulcl.html","wb") as fp:
     fp.write(r.read())
 conn.close()
 print(r)
+ """
+
+""" #싱글스레드
+def counter(str_name):
+    for i in range(50000):
+        print(f"Countdown{i},name:{str_name}\n")
+        
+        for i in range(3):
+            counter(f"num{i}")
+            
+        print("single end") """
+        
+    
+""" import threading as td
+def counter(str_name):
+    for i in range(50000):
+        print(f"Countdown{i},name:{str_name}\n")
+thread1=td.Thread(target=counter,args=("1num",))
+thread2=td.Thread(target=counter,args=("2num",))
+thread3=td.Thread(target=counter,args=("3num",))
+
+thread1.start()
+thread2.start()
+thread3.start()
+
+thread1.join()
+thread2.join()
+thread3.join()
+
+print("multi end")
+ """
+""" #병렬처리
+import multiprocessing as mp 
+
+def counter(str_name):
+    for i in range(50000):
+        print(f"Countdown {i}, name : {str_name}\n")
+    
+process1=mp.Process(target=counter,args=("1num",))
+process2=mp.Process(target=counter,args=("2num",))
+process3=mp.Process(target=counter,args=("3num",))
+
+start=time.time()
+
+process1.start()
+process2.start()
+process3.start()
+
+process1.join()
+process2.join()
+process3.join()
+end=time.time()
+
+ """
+ 
+#main 실행
+def main():
+    print("hello world")
+    
+def run():
+    print("hello python")
+
+if __name__=="++main__":
+    run()
