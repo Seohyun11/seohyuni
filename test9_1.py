@@ -259,7 +259,7 @@ def main():
 </body>
 
 </html> """
-
+""" 
 #태그 찾기
 from bs4 import Beautifulsoup as bs
 import requests as rq
@@ -273,4 +273,4 @@ pprint(pres)
 print("\n1____________________________\n")
 print(pres.get_text().strip())
 print("\n2____________________________\n")
-print(pres.next_element.get_text().strip())
+print(pres.next_element.get_text().strip()) """
