@@ -1,162 +1,268 @@
+
 """ from bs4 import BeautifulSoup as bs
 import requests as rq
-url="https://table.cafe.daum.net/"
+ """
+""" url = "https://table.cafe.daum.net/"
 res = rq.get(url)
 
-hmltxt=res.text
-res_html=bs(hmltxt,'html.parser') """
+hmltxt = res.text
+res_html = bs(hmltxt, "html.parser")
+item = res_html.select_one("#content_table > div.table_group > div:nth-child(3) > div.item_detail > a > strong")
+
+print(item)
+print(item.get_text())
+
+wt = res_html.select_one("#content_table > div.table_group > div:nth-child(3) > div.item_detail > a > div > span.txt_name")
+print(wt)
+print(wt.get_text())
+
+goods = res_html.select_one("#content_table > div.table_group > div:nth-child(3) > div.item_reply > div > button")
+print(goods)
+print(goods.get_text()) """
 
 
-""" from bs4 import BeautifulSoup as bs
-import requests as rq
-import os
-from urllib.request import urlretrive as rl
-url="https://news.daum.net/"
-res=rq.get(url)
+""" url = "https://news.daum.net/"
+res = rq.get(url)
 
-hmltxt=res.text
-res_html=bs(hmltxt,'html.parser')
+hmltxt = res.text
+res_html = bs(hmltxt, "parser")
 
-imgs=res_html.select("img")
-print(imgs)
-print("\n''''''''''''''''''''''''''''''''''\n")
-linkimgs=[]
-for i in imgs:
-    irs=i.attrs["src"]
-    print(irs+"\n")
-    linkimgs.append(irs)
+iss = res_html.select("a.wrap_thumb")
+
+print("\n-----------------------------------\n")
+ct = res_html.select("a.wrap_thumb")
+for j in ct:
+    #c = j.attrs["data-tiara-custom"]
+    c = j.attrs["data-tiara-id"]
+    print(c + "\n") """
     
-folder="imgs/"
+""" import os
+from urllib.request import urlretrieve as rl """
+
+""" url = "https://news.daum.net/"
+res = rq.get(url)
+
+hmltxt = res.text
+res_html = bs(hmltxt, "html.parser")
+
+imgs = res_html.select("img")
+print(imgs)
+print("\n-----------------------------------\n") """
+
+""" linkimgs = []
+
+for i in imgs:
+    irs = i.attrs["src"]
+    print(irs + "\n")
+    linkimgs.append(irs)
+
+#print(linkimgs)
+folder = "imgs/"
 if not os.path.isdir(folder):
     os.mkdir(folder)
-    
-i=0
+
+i = 0
 for ln in linkimgs:
-    if str(ln).find("//t")==False:
+    if str(ln).find("//t") == False:
         print(ln)
         continue
     else:
         pass
-    i+=1
-    rl(ln,folder+f"{i}.jpg")
     
-     """
-     
-     
-""" from pandas import Series as sr
-data=[10,20,30,40]
-sdata=sr(data)
+    i += 1
+    rl(ln, folder + f"{i}.jpg")
+    
+    #print(ln)
+    #linkimgs.append(img.attrs["src"]) """
+    
 
+""" from pandas import Series as sr """
+
+""" data = [10, 20, 30, 40]
+sdata = sr(data)
 print(sdata) """
 
-""" from pandas import Series as sr
-data=[10,20,30,40]
-sdata=sr(data)
 
-print(sdata.index)
-print(sdata.index.to_list())
+""" import numpy as np """
 
-from pandas import Series as sr
-data=[10,20,30,40]
-sdata=sr(data)
+""" data = np.arange(1, 5)
+sdata = sr(data)
+print(sdata) """
+
+
+""" data = [10, 20, 30, 40]
+sdata = sr(data)
+#print(sdata.index)
+print(sdata.index.to_list()) """
+
+""" data = [10, 20, 30, 40]
+sdata = sr(data)
 print(sdata)
-print("\n--------------------\n")
-sdata.index=['a','b','c','d']
+print("\n-----------------------------------\n")
+
+sdata.index = ["a", "b", "c", "d"]
 print(sdata) """
 
-""" from pandas import Series as sr
-dt=[10,20,30,40]
-idx=['a','b','c','d']
-sdata=sr(data=idx,index=dt)
+
+""" data = [10, 20, 30, 40]
+idx = ["a", "b", "c", "d"]
+sdata = sr(data, idx)
 print(sdata) """
 
-""" from pandas import Series as sr
-dt=[10,20,30,40]
-idx=['a','b','c','d']
-sdata=sr(data=dt,index=idx)
+""" dt = [10, 20, 30, 40]
+idx = ["a", "b", "c", "d"]
+#sdata = sr(data = dt, index = idx)
+#sdata = sr(data = idx, index = dt)
+#sdata = sr(dx, idx)
+#sdata = sr(idx, dt)
+sdata = sr(index = dt, data = idx)
+print(sdata) """
 
-sd=sdata.reindex(['a','j','c'])
 
-print(sdata['a'])
+""" dt = [10, 20, 30, 40]
+idx = ["a", "b", "c", "d"]
+sdata = sr(data = dt, index = idx)
+#print(sdata)
+
+#sd = sdata.reindex(["a", "j", "c"])
+#sd = sdata.reindex(["a", "c"])
+#print(sd)
+
+sd = sdata.reindex(["b"])
+print(sd)
+print("\n-----------------------------------\n")
+print(sdata["b"])
+print("\n-----------------------------------\n")
+
 print(sdata.iloc[0])
-print(sdata.loc['a'])
- """
- 
-""" from pandas import Series as sr
-data=[10,20,30,40]
-sdata=sr(data)
-print(sdata)
- """
- 
-""" from pandas import Series as sr
-dt=['alpha','beta','charlie','delta']
-idx=['ab','bc','cd','de']
-sdata=sr(data=dt,index=idx)
-print(sdata.iloc[1:2])
-print("\n---------------------\n")
-print(sdata.iloc[2:])
-print("\n---------------------\n")
-print(sdata.iloc[:2])
-print("\n---------------------\n")
+print(sdata.iloc[2])
+print("\n-----------------------------------\n")
+print(sdata.loc["a"])
+print(sdata.loc["d"])
 
-from pandas import Series as sr
-dt=['alpha','beta','charlie','delta']
-idx=['ab','bc','cd','de']
-sdata=sr(data=dt,index=idx)
-sdata.loc['cd']='echo'
+#print(sdata[0]) """
+
+
+""" dt = ["alpha", "beta", "charlie", "delta"]
+idx = ["ab", "bc", "cd", "de"]
+
+sdata = sr(data = dt, index = idx)
+
+print(sdata.loc["bc":"cd"])
+print("\n-----------------------------------\n")
+print(sdata.loc["bc":])
+print("\n-----------------------------------\n")
+print(sdata.loc[:"bc"])
+print("\n-----------------------------------\n") """
+
+
+""" dt = ["사과", "바나나", "수박", "참외"]
+idx = ["가", "나", "다", "라"]
+
+sdata = sr(data = dt, index = idx)
+
+print(sdata.iloc[1:2])
+print("\n-----------------------------------\n")
+print(sdata.iloc[2:])
+print("\n-----------------------------------\n")
+print(sdata.iloc[:2])
+print("\n-----------------------------------\n") """
+
+
+""" dt = ["alpha", "beta", "charlie", "delta"]
+idx = ["ab", "bc", "cd", "de"]
+
+sdata = sr(data = dt, index = idx) """
+
+""" sdata.loc["cd"] = "echo"
+print(sdata)
+
+print("\n-----------------------------------\n")
+sdata.iloc[1] = "fox"
 print(sdata) """
 
-""" from pandas import Series as sr
-s1=sr([100,200,300],index=['a','b','c'])
-s2=sr([100,200,300],index=['b','c','a'])
+""" sdata.loc["ef"] = "golf"
+print(sdata) """
 
-sum_res=s1+s2
+
+""" print("\n-----------------------------------\n")
+print(sdata.drop("bc"))
+print("\n-----------------------------------\n")
+sd = sdata.drop("cd")
+print(sd) """
+
+
+""" s1 = sr([100, 200, 300], index=["a", "b", "c"])
+s2 = sr([100, 200, 300], index=["b", "c", "a"])
+
+sum_res = s1 + s2
 print(sum_res)
 print(sum_res.max())
 print(sum_res.mean())
-print("\n---------------------\n")
+print(sum_res.min())
+print("\n-----------------------------------\n")
 
-sub_res=s1-s2
+sub_res = s1 - s2
 print(sub_res)
 print(sub_res.max())
 print(sub_res.mean())
 print(sub_res.min())
-print("\n---------------------\n")
+print("\n-----------------------------------\n")
 
-mul_res=s2*10
+mul_res = s2 * 10
 print(mul_res)
-dv_res=s1/10
 
-from pandas import Series as sr
-idx=['a','b','c','d','e']
-s1=sr([1100,270,30,450,50],index=idx)
-s2=sr([150,740,810,40,25],index=idx)
+div_res = s1 / 10
+print(div_res) """
 
-fil=s1>300
+
+""" data = {
+    "삼성전자": "전기,전자",
+    "LG전자": "전기,전자",
+    "현대차": "운수장비",
+    "NAVER": "서비스업",
+    "카카오": "서비스업"
+}
+
+sdata = sr(data)
+uniq = sdata.unique()
+print(uniq)
+
+sc = sdata.count()
+print(sc)
+
+sv = sdata.value_counts()
+print(sv) """
+
+
+""" idx = ["a", "b", "c", "d", "e"]
+s1 = sr([1100, 270, 30, 450, 50], index=idx)
+s2 = sr([150, 740, 810, 40, 25], index=idx)
+
+fil = s1 > 300
 print(fil)
 
-print("\n---------------------\n")
+print("\n-----------------------------------\n")
 print(s1[fil])
 print(s1[fil].index)
 
-print("\n---------------------\n")
-fill=s2>s1
-print(fill)
+print("\n-----------------------------------\n")
+fil1 = s2 > s1
+print(fil1)
+print(s2[fil1])
+print(s2[fil1].index)
 
-print(s2[fill])
-print(s2[fill].index)
+print("\n-----------------------------------\n")
+print(s2[s2 > s1].index) """
 
-print("\n---------------------\n")
-print(s2[s2>s1].index) """
+""" 
+idx = ["a", "b", "c", "d", "e"]
+dt = [1100, 270, 30, 450, 50]
+s1 = sr(data=dt, index=idx)
 
-from pandas import Series as sr
-idx=['a','b','c','d','e']
-dt=[1100,270,30,450,50]
-s1=sr(data=dt,index=idx)
-
-sv=s1.sort_values()
+sv = s1.sort_values()
 print(sv)
 
-print("\n---------------------\n")
-sv1=s1.sort_values(ascending=False)
-print(sv1)
+print("\n-----------------------------------\n")
+sv1 = s1.sort_values(ascending=False)
+print(sv1) """
