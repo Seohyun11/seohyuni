@@ -27,11 +27,6 @@ with open(folder + "fktemp.csv", "a", newline='', encoding='utf8') as f :
             temp.catch_phrase() + "," + 
             temp.color_name() + "\n") """
     
-    
-    
-    
-    
-    
 """ import pandas as pd
 
 folder = "data/"
@@ -39,7 +34,7 @@ target = folder + "fktemp.csv"
 
 df = pd.read_csv(target) """
 
-print(df.name == "최우진")
+""" print(df.name == "최우진")
 print("\n-----------------------------------\n")
 
 print(df.company == "주식회사")
@@ -56,9 +51,9 @@ print(res.count())
 
 temp = df.postcode.mean()
 temp = df.postcode.sum()
-print(temp)
+print(temp) """
 
-temp = df[df.color == "Beige"].postcode.mean()
+""" temp = df[df.color == "Beige"].postcode.mean()
 print(temp)
 temp = df[df.color == "Beige"].postcode.sum()
 print(temp)
@@ -90,9 +85,6 @@ temp = df.sort_values("name", ascending=False)
 print(temp)
 
 
-
-
-
 import pandas as pd
 
 col = ['Machine','Country','Price','Brand']
@@ -109,4 +101,4 @@ print("\n-----------------------------------\n")
 print(df.pivot(index='Machine',columns='Country',values='Price'))
 print(df.pivot(index='Brand',columns='Machine',values='Price'))
 print(df.pivot(index='Country',columns='Machine',values='Price'))
-print(df.pivot(index='Price',columns='Brand',values='Machine'))
+print(df.pivot(index='Price',columns='Brand',values='Machine')) """
